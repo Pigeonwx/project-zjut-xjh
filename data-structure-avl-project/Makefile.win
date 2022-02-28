@@ -1,0 +1,31 @@
+# Project: 项目1
+# Makefile created by Dev-C++ 5.7.1
+
+CPP      = g++.exe -D__DEBUG__
+CC       = gcc.exe -D__DEBUG__
+WINDRES  = windres.exe
+OBJ      = AVLTree.o main.o
+LINKOBJ  = AVLTree.o main.o
+LIBS     = -L"D:/DEV/DevCpp64/MinGW64/lib" -L"D:/DEV/DevCpp64/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -g3
+INCS     = -I"D:/DEV/DevCpp64/MinGW64/include" -I"D:/DEV/DevCpp64/MinGW64/x86_64-w64-mingw32/include" -I"D:/DEV/DevCpp64/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include"
+CXXINCS  = -I"D:/DEV/DevCpp64/MinGW64/include" -I"D:/DEV/DevCpp64/MinGW64/x86_64-w64-mingw32/include" -I"D:/DEV/DevCpp64/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include" -I"D:/DEV/DevCpp64/MinGW64/lib/gcc/x86_64-w64-mingw32/4.8.1/include/c++"
+BIN      = 项目1.exe
+CXXFLAGS = $(CXXINCS) -std=gnu++11 -g3
+CFLAGS   = $(INCS) -std=gnu++11 -g3
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+AVLTree.o: AVLTree.cpp
+	$(CPP) -c AVLTree.cpp -o AVLTree.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
